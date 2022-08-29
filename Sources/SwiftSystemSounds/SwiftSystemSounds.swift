@@ -1,7 +1,7 @@
 import AVFoundation
 
-public class SwiftSystemSounds {
-    enum SystemSound {
+public struct SwiftSystemSounds {
+    public enum SystemSound {
         case alarm
         case buttonTap
         case charge
@@ -31,7 +31,7 @@ public class SwiftSystemSounds {
     /**
      Play an iOS system sound.
      */
-    static func playSound(sound: SystemSound) {
+    public static func playSound(sound: SystemSound) {
         var systemSoundId: SystemSoundID
 
         switch sound {
