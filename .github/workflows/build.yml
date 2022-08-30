@@ -6,8 +6,10 @@ on:
       - '.github/workflows/build.yml'
       - '.swiftlint.yml'
       - '**/*.swift'
-    tags-ignore:
-      - '**'
+    branches:
+      - "**"
+    tags:
+      - "!**"
   pull_request:
     paths:
       - '.github/workflows/build.yml'
