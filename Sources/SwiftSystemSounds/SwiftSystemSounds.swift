@@ -1,6 +1,37 @@
 import AVFoundation
 
 public struct SwiftSystemSounds {
+    private static let defaultId: SystemSoundID = 1000
+    private static let soundToIdMapping: [SystemSound: SystemSoundID] = [
+        .alarm: 1005,
+        .buttonTap: 1104,
+        .charge: 1030,
+        .descent: 1024,
+        .error: 1053,
+        .fanfare: 1025,
+        .lock: 1100,
+        .lowPower: 1006,
+        .happyTaps: 1022,
+        .magic: 1031,
+        .mailReceived: 1000,
+        .mailSent: 1001,
+        .messageReceived: 1003,
+        .messageSent: 1004,
+        .noir: 1029,
+        .power: 1106,
+        .suspense: 1032,
+        .technoTrill: 1109,
+        .telegraph: 1033,
+        .unlock: 1101,
+        .vibrate: 4095, // This isn't a sound but an actual vibration of the device
+        .victoryTune: 1027,
+        .voicemail: 1002,
+        .whistle: 1016
+    ]
+
+    /**
+     All possible iOS system sounds for this library.
+     */
     public enum SystemSound {
         case alarm
         case buttonTap
@@ -32,59 +63,8 @@ public struct SwiftSystemSounds {
      Play an iOS system sound.
      */
     public static func playSound(sound: SystemSound) {
-        var systemSoundId: SystemSoundID
+        let soundId = SwiftSystemSounds.soundToIdMapping[sound] ?? defaultId
 
-        switch sound {
-        case .alarm:
-            systemSoundId = 1005
-        case .buttonTap:
-            systemSoundId = 1104
-        case .charge:
-            systemSoundId = 1030
-        case .descent:
-            systemSoundId = 1024
-        case .error:
-            systemSoundId = 1053
-        case .fanfare:
-            systemSoundId = 1025
-        case .lock:
-            systemSoundId = 1100
-        case .lowPower:
-            systemSoundId = 1006
-        case .happyTaps:
-            systemSoundId = 1022
-        case .magic:
-            systemSoundId = 1031
-        case .mailReceived:
-            systemSoundId = 1000
-        case .mailSent:
-            systemSoundId = 1001
-        case .messageReceived:
-            systemSoundId = 1003
-        case .messageSent:
-            systemSoundId = 1004
-        case .noir:
-            systemSoundId = 1029
-        case .power:
-            systemSoundId = 1106
-        case .suspense:
-            systemSoundId = 1032
-        case .technoTrill:
-            systemSoundId = 1109
-        case .telegraph:
-            systemSoundId = 1033
-        case .unlock:
-            systemSoundId = 1101
-        case .vibrate:
-            systemSoundId = 4095 // This isn't a sound but an actual vibration of the device
-        case .victoryTune:
-            systemSoundId = 1027
-        case .voicemail:
-            systemSoundId = 1002
-        case .whistle:
-            systemSoundId = 1016
-        }
-
-        AudioServicesPlaySystemSound(systemSoundId)
+        AudioServicesPlaySystemSound(soundId)
     }
 }

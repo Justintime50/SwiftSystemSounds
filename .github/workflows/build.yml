@@ -13,12 +13,10 @@ on:
       - '**/*.swift'
       
 jobs:
-  build:
+  test:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Build
-        run: make build
       - name: Run tests
         run: make test
   lint:
