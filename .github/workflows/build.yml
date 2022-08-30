@@ -6,17 +6,28 @@ on:
       - '.github/workflows/build.yml'
       - '.swiftlint.yml'
       - '**/*.swift'
+    tags-ignore:
+      - '**'
   pull_request:
     paths:
       - '.github/workflows/build.yml'
       - '.swiftlint.yml'
       - '**/*.swift'
-      
+    tags-ignore:
+      - '**'
+
 jobs:
   test:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Cache build
+        uses: actions/cache@v3
+        with:
+          path: .build
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
       - name: Run tests
         run: make test
   lint:
