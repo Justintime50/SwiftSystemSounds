@@ -1,7 +1,7 @@
 import AVFoundation
 
 public struct SwiftSystemSounds {
-    private static let defaultId: SystemSoundID = 1000
+    private static let defaultId: SystemSoundID = 1104 // buttonTap
     private static let soundToIdMapping: [SystemSound: SystemSoundID] = [
         .alarm: 1005,
         .buttonTap: 1104,
