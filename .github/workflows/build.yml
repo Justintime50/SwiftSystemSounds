@@ -13,8 +13,6 @@ on:
       - '.github/workflows/build.yml'
       - '.swiftlint.yml'
       - '**/*.swift'
-    tags-ignore:
-      - '**'
 
 jobs:
   test:
