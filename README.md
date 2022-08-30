@@ -19,6 +19,19 @@ import SwiftSystemSounds
 SwiftSystemSounds.playSound(sound: .buttonTap)
 ```
 
+## Development
+
+```bash
+# Build the project
+make build
+
+# Lint the project
+make lint
+
+# Test the project
+make test
+```
+
 ## Attribution
 
 Used mappings from <https://github.com/TUNER88/iOSSystemSoundsLibrary> to create library.
